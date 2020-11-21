@@ -105,6 +105,13 @@ int main(void) {
     glEnableVertexAttribArray(colAttrib);
     glVertexAttribPointer(colAttrib, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(2*sizeof(float)));
 
+    // Create a texture object
+    GLuint texture;
+    glGenTextures(1, &texture);
+    glBindTexture(GL_TEXTURE_2D, texture);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
     // Window loop
     while (glfwWindowShouldClose(window) == GL_FALSE) {
         if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
